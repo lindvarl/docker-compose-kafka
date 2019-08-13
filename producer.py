@@ -42,7 +42,7 @@ class Producer:
         self.producer = AvroProducer({
             'bootstrap.servers': 'broker:29092',
             'client.id': 'pythonClient',
-            'schema.registry.url': 'http://192.168.10.124:8081'
+            'schema.registry.url': 'http://schema-registry:8081'
         })
         self.topic = topic
 
