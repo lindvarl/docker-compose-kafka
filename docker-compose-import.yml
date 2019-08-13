@@ -1,0 +1,9 @@
+# docker-compose.yml
+version: '3'
+services:
+  import:
+    build:
+      context: .
+      dockerfile: Dockerfile-import
+    volumes:
+      - .:/code

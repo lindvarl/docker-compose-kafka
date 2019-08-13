@@ -1,0 +1,6 @@
+flask
+numpy
+requests
+confluent_kafka
+fastavro
+avro-python3
