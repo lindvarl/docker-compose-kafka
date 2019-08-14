@@ -5,5 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-import
+    environment:
+      BOOTSTRAP_SERVER: 'broker:29092'
+      SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
     volumes:
       - .:/code

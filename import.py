@@ -1,5 +1,5 @@
 import time
-from producer import Producer
+from jskafka.producer import Producer
 import numpy as np
 
 start = time.time_ns()

@@ -1,7 +1,7 @@
 from confluent_kafka.avro import AvroProducer
 import logging.handlers
 from confluent_kafka import avro
-
+import os
 
 class Producer:
 
@@ -37,12 +37,12 @@ class Producer:
     handler.setFormatter(formatter)
     log.addHandler(handler)
 
-    def __init__(self, topic):
+    def __init__(self, topic, bootstrap_servers=os.environ["BOOTSTRAP_SERVER"], schema_registry_url=os.environ["SCHEMA_REGISTRY_URL"]):
 
         self.producer = AvroProducer({
-            'bootstrap.servers': 'broker:29092',
+            'bootstrap.servers': bootstrap_servers,
             'client.id': 'pythonClient',
-            'schema.registry.url': 'http://schema-registry:8081'
+            'schema.registry.url': schema_registry_url
         })
         self.topic = topic
 
