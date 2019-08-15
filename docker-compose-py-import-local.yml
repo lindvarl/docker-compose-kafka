@@ -1,10 +1,15 @@
 # docker-compose.yml
 version: '3'
 services:
-  flask:
-    image: jsvapps.azurecr.io/ngrmf-fo/ingressplatform/kafka-flask:v1
+  import:
+    build:
+      context: .
+      dockerfile: Dockerfile-import
     environment:
       BOOTSTRAP_SERVER: 'broker:29092'
       SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
-    ports:
-      - "5000:5000"
+    volumes:
+      - .:/code
+
+    
+

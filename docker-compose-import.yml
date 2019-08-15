@@ -1,12 +1,16 @@
 # docker-compose.yml
 version: '3'
 services:
-  import:
-    build:
-      context: .
-      dockerfile: Dockerfile-import
+  randomproducer:
+    image: jsvapps.azurecr.io/ngrmf-fo/ingressplatform/amplitude-rnd-generator:1.0-SNAPSHOT
     environment:
-      BOOTSTRAP_SERVER: 'broker:29092'
+      SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: 'broker:29092'
+      BOOTSTRAP_SERVERS: 'broker:29092'
       SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
-    volumes:
-      - .:/code
+      CLIENT_ID: 'Test-1'
+      KAFKA_DASAMPLITUDES_OUTPUT_DESTINATIONTOPIC_NAME: 'random-amplitudes'
+      KAFKA_DASAMPLITUDES_OUTPUT_DESTINATIONTOPIC_REPLICATIONFACTOR: 1
+      KAFKA_DASAMPLITUDES_OUTPUT_DESTINATIONTOPIC_LOCI: 500
+      KAFKA_DASAMPLITUDES_SECONDSTORUN: 600
+
+
